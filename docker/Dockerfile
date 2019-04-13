@@ -1,8 +1,10 @@
 FROM tensorflow/tensorflow:2.0.0a0-py3
-
+WORKDIR /home
 RUN apt-get update && apt-get install -y git
 
-WORKDIR /home
+RUN ls
 
-ENTRYPOINT ["./home/tensorflow-docker/docker/entrypoint.sh"]
+RUN git clone https://github.com/pajayrao/tensorflow-docker.git
+
+ENTRYPOINT ["bash", "/home/tensorflow-docker/docker/entrypoint.sh"]
 
